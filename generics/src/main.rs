@@ -92,7 +92,7 @@ impl<T> DoStuff for Point<T> {
   }
 }
 
-impl Display for Example { // example of implementing a trait on a trait (trait wrapping/blanket impementation)
+impl Display for dyn Example { // example of implementing a trait on a trait (trait wrapping/blanket impementation)
   fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::result::Result<(), std::fmt::Error> {
     formatter.align();
     Ok(())
