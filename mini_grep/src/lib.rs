@@ -1,50 +1,21 @@
-#[cfg(test)]
-mod tests {
-  use super::*;
-
-  #[test]
-  fn case_sensitive() {
-    let query = "dUcT";
-    let contents = "\
-      Rust:\n\
-      safe, fast, productive.\n\
-      Pick three.\
-    ";
-    let expected: Vec<String> = Vec::new();
-
-    assert_eq!(search(query, contents), expected);
-  }
-
-  #[test]
-  fn case_insensitive() {
-    let query = "dUcT";
-    let contents = "\
-      Rust:\n\
-      safe, fast, productive.\n\
-      Pick three.\
-    ";
-    let expected = vec!["safe, fast, productive."];
-
-    assert_eq!(search_case_insensitive(query, contents), expected);
-  }
-}
-
-pub struct Config<'a> {
-  pub query: &'a str,
-  pub path: &'a str,
+pub struct Config {
+  pub query: String,
+  pub path: String,
   pub case_sensitive: bool,
 }
 
-impl<'a> Config<'a> {
-  pub fn new(args: &[String]) -> Result<Config, &str> {
-    let query = args.get(1);
-    if query.is_none() { return Err("Missing query parameter."); }
-    let query = query.unwrap();
+impl Config {
+  pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
+    args.next();
 
-    let path = args.get(2);
-    if path.is_none() { return Err("Missing file parameter."); }
-    let path =  path.unwrap();
-
+    let query = match args.next() {
+      Some(v) => v,
+      None => return Err("Missing query parameter."),
+    };
+    let path = match args.next() {
+      Some(v) => v,
+      None => return Err("Missing file parameter."),
+    };
     let case_sensitive = std::env::var("CASE_INSENSITIVE").is_err();
 
     Ok(Config { query, path, case_sensitive })
@@ -69,18 +40,16 @@ pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
 }
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-  let mut v = Vec::new();
-  for line in contents.lines() {
-    if line.contains(query) { v.push(line); }
-  }
-  v
+  contents
+    .lines()
+    .filter(|line| line.contains(query))
+    .collect()
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
   let query = &query.to_lowercase();
-  let mut v = Vec::new();
-  for line in contents.lines() {
-    if line.to_lowercase().contains(query) { v.push(line); }
-  }
-  v
+  contents
+    .lines()
+    .filter(|line| line.to_lowercase().contains(query))
+    .collect()
 }
