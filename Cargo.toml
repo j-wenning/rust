@@ -1,0 +1,25 @@
+[workspace]
+
+members = [
+  "branches",
+  "closures",
+  "enums",
+  "errors",
+  "functions",
+  "generics",
+  "guessing_game",
+  "hash_maps",
+  "hello_cargo",
+  # "hello_world",
+  "iterators",
+  "lifetimes",
+  "mini_grep",
+  "ownership",
+  "references",
+  "restaurant",
+  "slices",
+  "structs",
+  "tests",
+  "variables",
+  "vectors"
+]
