@@ -21,5 +21,6 @@ members = [
   "structs",
   "tests",
   "variables",
-  "vectors"
+  "vectors",
+  "smart_pointers"
 ]
