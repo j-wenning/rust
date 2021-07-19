@@ -3,6 +3,7 @@
 members = [
   "branches",
   "closures",
+  "concurrency",
   "enums",
   "errors",
   "functions",
@@ -18,9 +19,9 @@ members = [
   "references",
   "restaurant",
   "slices",
+  "smart_pointers",
   "structs",
   "tests",
   "variables",
   "vectors",
-  "smart_pointers"
 ]
