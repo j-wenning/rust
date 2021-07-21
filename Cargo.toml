@@ -23,6 +23,7 @@ members = [
   "smart_pointers",
   "structs",
   "tests",
+  "unsafe_rust",
   "variables",
   "vectors",
 ]
