@@ -1,6 +1,7 @@
 [workspace]
 
 members = [
+  "advanced_traits",
   "branches",
   "closures",
   "concurrency",
