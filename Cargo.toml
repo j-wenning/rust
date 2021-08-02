@@ -1,7 +1,9 @@
 [workspace]
 
 members = [
+  "advanced_functions_closures",
   "advanced_traits",
+  "advanced_types",
   "branches",
   "closures",
   "concurrency",
