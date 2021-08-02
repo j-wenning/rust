@@ -18,6 +18,7 @@ members = [
   "iterators",
   "lifetimes",
   "mini_grep",
+  "macros",
   "ownership",
   "patterns",
   "references",
