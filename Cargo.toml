@@ -14,6 +14,8 @@ members = [
   "guessing_game",
   "hash_maps",
   "hello_cargo",
+  "hello_macro",
+  "hello_macro/hello_macro_derive",
   # "hello_world",
   "iterators",
   "lifetimes",
