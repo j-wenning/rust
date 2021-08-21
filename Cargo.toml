@@ -32,4 +32,5 @@ members = [
   "unsafe_rust",
   "variables",
   "vectors",
+  "web_server",
 ]
